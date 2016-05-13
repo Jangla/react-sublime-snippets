@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {combineReducers,applyMiddleware,createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {appReducer,initialState as appState} from '../../App';
+
+import ${1} from './${2:[AppName]}Actions.js';
+
+import ${3:RdcrName} from './${2:[AppName]}Rdcr';
+
+// import your components here
+import MyApp${4:YourCmp} from './components/${4}';
+
+var reducers = combineReducers({
+	${3:RdcrName}
+});
+
+var MyReduxStore = applyMiddleware(thunk)(createStore)(reducers, appState);
+
+var MyApp${2:[AppName]} = (function(){
+	'use strict';
+
+	return {
+		init: function() {
+
+			ReactDOM.render(
+				<Provider store={MyReduxStore}>
+					<${4:YourCmp} />
+				</Provider>, document.getElementById('${5}')
+			);
+
+			${0}
+		}
+	}
+}());
+
+Object.assign(window,{MyApp${2:[AppName]}},{MyReduxStore});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rrdxapp</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.jsx</scope> -->
+	<description>My React Component</description>
+</snippet>

@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[
+import ConsoleActionTypes from '../common/ConsoleActionTypes';
+import ${1:AppName}ActionTypes, * as ${1}Actions from './${1}Actions';
+import {fromJS,toJS,List,Map} from 'immutable';
+
+var ActionTypes = ActionTypes||{};
+
+Object.assign(ActionTypes,ConsoleActionTypes,${1}ActionTypes);
+
+const initialState = Map({
+	isFetching : false,
+	${1/(.+)/\L\1/g}: List(),								// example - remove if not needed
+	lastUpdated : new Date()
+});
+
+/**
+ * Reducer for the ${1/(.+)/\L\1/g} app
+ * @param {Object} state  		The state passed in from Redux
+ * @param {Object} action 		The action that's been dispatched
+ */
+export default function ${1}Reducer(state = initialState, action={}) {
+
+	// if you need to manipulate your data before it gets updated in the state, do it in here
+	function prep${1}DataFn(${1/(.+)/\L\1/g}) {
+		return ${1/(.+)/\L\1/g};
+	}
+
+	switch (action.type) {
+		case ActionTypes.RETRIEVE_${1/(.+)/\U\1/g}:
+			return state.set('isFetching', false)
+				.set('${1/(.+)/\L\1/g}', List(prep${1}DataFn(action.${1/(.+)/\L\1/g})))
+				.set('lastUpdated',action.receivedAt);
+
+			break;
+
+		${0}
+
+		default:
+			return state;
+			break;
+
+	}
+};
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rrdxredcr</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+	<description>My Redux Reducer</description>
+</snippet>

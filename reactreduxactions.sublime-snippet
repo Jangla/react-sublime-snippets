@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+import * as CommonAjaxActions from '../../common/AjaxActions';
+import axios from 'axios';
+import {Map,List} from 'immutable';
+
+var ${1}ActionTypes = {
+};
+
+export default ${1}ActionTypes;
+
+var MyAppActionTypes = Object.assign({},MyAppActionTypes,channelActionTypes);
+
+// Private methods
+
+// Public methods
+// remember to export these functions
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rrdxaction</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+	<description>My Redux Actions</description>
+</snippet>
